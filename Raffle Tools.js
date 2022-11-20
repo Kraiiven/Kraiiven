@@ -1,21 +1,24 @@
 // ==UserScript==
 // @name         Raffle Tools
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @author       Kraiiven
 // @match        https://www.alphabot.app/*
 // @match        https://twitter.com/intent/retweet*
+// @match        https://www.premint.xyz/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=alphabot.app
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
+
     function onKeydown(evt) {
     let str = location.href;
     if (str.split("/")[2] == "www.alphabot.app") {Alphabot()};
     if (str.split("/")[2] == "twitter.com") {Twitter()};
+    if (str.split("/")[2] == "www.premint.xyz") {Premint()};
     }
 
 
@@ -39,6 +42,10 @@
         Retweet();
         await sleep(2000);
         Like();
+    }
+
+    function Premint(){
+        document.querySelector('[id="register-submit"]').click();
     }
 
     document.addEventListener('keydown', onKeydown, true);
