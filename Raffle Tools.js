@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Raffle Tools
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.3.1
 // @description  try to take over the world!
 // @author       Kraiiven
 // @match        https://www.alphabot.app/*
@@ -15,12 +15,13 @@
     'use strict';
 
     function onKeydown(evt) {
-    let str = location.href;
-    if (str.split("/")[2] == "www.alphabot.app") {Alphabot()};
-    if (str.split("/")[2] == "twitter.com") {Twitter()};
-    if (str.split("/")[2] == "www.premint.xyz") {Premint()};
+        if (evt.keyCode == 13) {
+           let str = location.href;
+           if (str.split("/")[2] == "www.alphabot.app") {Alphabot()};
+           if (str.split("/")[2] == "twitter.com") {Twitter()};
+           if (str.split("/")[2] == "www.premint.xyz") {Premint()};
+        }
     }
-
 
     function Alphabot() {
         document.querySelector('#main-body > form > div > div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-4.css-1tz8m30 > div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-4.css-1px0r2z > div > div > div.MuiBox-root.css-121kum4 > button').click();
